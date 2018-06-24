@@ -1,0 +1,272 @@
+{
+	"variables": [],
+	"info": {
+		"name": "HorusTest",
+		"_postman_id": "770b0949-adc2-4cdb-2a5a-c2324a2d9501",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "horusTest_addUser",
+			"request": {
+				"url": "http://localhost:8010/user/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "tester",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "0Password!",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8010/api/books",
+			"request": {
+				"url": "http://localhost:8010/api/books",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjE2YTY3Yjg4MTU5MjJmNjgwZjk3OWIiLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNTI4MjEyNzE5LCJleHAiOjE1MjgyOTkxMTl9.XUoj8l94YCCOPwczXYrW9QZInm_1zO6VLD-se22kfPw",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8010/authenticate",
+			"request": {
+				"url": "http://localhost:8010/authenticate",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "jcooper",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "0Password!",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "true",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8010/tasks",
+			"request": {
+				"url": "http://localhost:8010/tasks",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "New Sun",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Author",
+							"value": "ZZ",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "ISBN",
+							"value": "3344567",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8010/api/books",
+			"request": {
+				"url": "http://localhost:8010/api/books",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjE2ZTMyMWU1ODZkODI4MzA3MTI3N2QiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTUyODM3ODA5MCwiZXhwIjoxNTI4NDY0NDkwfQ.v0Qbi3Z0FPUarqpbTIlPBQISDU9xEy1Bu1-lZHaR7x0",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "New Day",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "author",
+							"value": "Smith",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "ibsn",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8010/tasks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8010/tasks",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Walking",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8010/tasks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Body should contain Shopping\"] = responseBody.has(\"Shopping\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8010/tasks",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjE2ZTMyMWU1ODZkODI4MzA3MTI3N2QiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTUyODcxOTIxNiwiZXhwIjoxNTI4ODA1NjE2fQ.8xm1OHhHFOpm97RcdZ10pn9FzZ0OK7ewGEC09r-nFRE",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
