@@ -10,7 +10,7 @@
 		{
 			"name": "horusTest_addUser",
 			"request": {
-				"url": "http://localhost:8010/user/register",
+				"url": "{{url}}/user/register",
 				"method": "POST",
 				"header": [
 					{
@@ -24,7 +24,7 @@
 					"urlencoded": [
 						{
 							"key": "name",
-							"value": "tester",
+							"value": "tester2",
 							"description": "",
 							"type": "text"
 						},
@@ -49,7 +49,7 @@
 		{
 			"name": "http://localhost:8010/api/books",
 			"request": {
-				"url": "http://localhost:8010/api/books",
+				"url": "{{url}}/api/books",
 				"method": "GET",
 				"header": [
 					{
@@ -59,7 +59,7 @@
 					},
 					{
 						"key": "x-access-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjE2YTY3Yjg4MTU5MjJmNjgwZjk3OWIiLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNTI4MjEyNzE5LCJleHAiOjE1MjgyOTkxMTl9.XUoj8l94YCCOPwczXYrW9QZInm_1zO6VLD-se22kfPw",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjE2ZTMyMWU1ODZkODI4MzA3MTI3N2QiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTUzMDAxNDE2NSwiZXhwIjoxNTMwMTAwNTY1fQ.CqmHnZ1TA6pl7JFrHSM0tn47ceHRkzCqwnuJbrcFOcQ",
 						"description": ""
 					}
 				],
@@ -70,8 +70,20 @@
 		},
 		{
 			"name": "http://localhost:8010/authenticate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Enjoy your token!\"]= responseBody.has(\"Enjoy your token!\");",
+							""
+						]
+					}
+				}
+			],
 			"request": {
-				"url": "http://localhost:8010/authenticate",
+				"url": "{{url}}/authenticate",
 				"method": "POST",
 				"header": [
 					{
@@ -85,7 +97,7 @@
 					"urlencoded": [
 						{
 							"key": "name",
-							"value": "jcooper",
+							"value": "tester1",
 							"description": "",
 							"type": "text"
 						},
@@ -108,48 +120,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8010/tasks",
-			"request": {
-				"url": "http://localhost:8010/tasks",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "name",
-							"value": "New Sun",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Author",
-							"value": "ZZ",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "ISBN",
-							"value": "3344567",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
 			"name": "http://localhost:8010/api/books",
 			"request": {
-				"url": "http://localhost:8010/api/books",
+				"url": "{{url}}/api/books",
 				"method": "POST",
 				"header": [
 					{
@@ -198,13 +171,14 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Response time is less than 100ms\"]= responseTime < 100;"
 						]
 					}
 				}
 			],
 			"request": {
-				"url": "http://localhost:8010/tasks",
+				"url": "{{url}}/tasks",
 				"method": "POST",
 				"header": [
 					{
@@ -249,7 +223,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8010/tasks",
+				"url": "{{url}}/tasks",
 				"method": "GET",
 				"header": [
 					{
