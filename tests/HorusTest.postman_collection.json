@@ -9,6 +9,18 @@
 	"item": [
 		{
 			"name": "horusTest_addUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Body should contain User already exist\"] = responseBody.has(\"User already exist\");"
+						]
+					}
+				}
+			],
 			"request": {
 				"url": "{{url}}/user/register",
 				"method": "POST",
@@ -47,28 +59,6 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8010/api/books",
-			"request": {
-				"url": "{{url}}/api/books",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"description": ""
-					},
-					{
-						"key": "x-access-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjE2ZTMyMWU1ODZkODI4MzA3MTI3N2QiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTUzMDAxNDE2NSwiZXhwIjoxNTMwMTAwNTY1fQ.CqmHnZ1TA6pl7JFrHSM0tn47ceHRkzCqwnuJbrcFOcQ",
-						"description": ""
-					}
-				],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
 			"name": "http://localhost:8010/authenticate",
 			"event": [
 				{
@@ -77,6 +67,8 @@
 						"type": "text/javascript",
 						"exec": [
 							"tests[\"Enjoy your token!\"]= responseBody.has(\"Enjoy your token!\");",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"TOKEN\", jsonData.token);",
 							""
 						]
 					}
@@ -121,6 +113,52 @@
 		},
 		{
 			"name": "http://localhost:8010/api/books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Body should contain New Day\"] = responseBody.has(\"New Day\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/api/books",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "x-access-token",
+						"value": "{{TOKEN}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8010/api/books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Body should contain New Day\"] = responseBody.has(\"New Day\");"
+						]
+					}
+				}
+			],
 			"request": {
 				"url": "{{url}}/api/books",
 				"method": "POST",
@@ -132,7 +170,7 @@
 					},
 					{
 						"key": "x-access-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjE2ZTMyMWU1ODZkODI4MzA3MTI3N2QiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTUyODM3ODA5MCwiZXhwIjoxNTI4NDY0NDkwfQ.v0Qbi3Z0FPUarqpbTIlPBQISDU9xEy1Bu1-lZHaR7x0",
+						"value": "{{TOKEN}}",
 						"description": ""
 					}
 				],
